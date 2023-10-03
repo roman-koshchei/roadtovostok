@@ -34,6 +34,23 @@ const why = [
       "Solo developed by ex-military lieutenant with over 10 years of game development experience."
   }
 ]
+
+const videos = [
+  { id: "TueqUvN5qu4", title: "AI Updates | Devlog #8 | Road to Vostok" },
+  { id: "uYLCviZrZVs", title: "Game Design | Devlog #4 | Road to Vostok" },
+  { id: "67srcb0VRmI", title: "Shelter System | Devlog #7 Road to Vostok" },
+  { id: "2HePkuTN6hs", title: "Public Demo 1 v2 | Road to Vostok" },
+  {
+    id: "EC4HfRgvKZg",
+    title: "Patrol Helicopters | Devlog #6 | Road to Vostok"
+  },
+  { id: "AmiENomel4o", title: "Looting | Devlog #3 | Road to Vostok" },
+  { id: "UdZDrRhEizc", title: "The Next Chapter | Devlog #5 | Road to Vostok" },
+  { id: "9OmnsnopobM", title: "Introduction | Devlog #1 | Road to Vostok" }
+]
+/*
+https://img.youtube.com/vi/TueqUvN5qu4/maxresdefault.jpg
+*/
 ---
 
 <Layout title="Road to Vostok">
@@ -82,23 +99,52 @@ const why = [
 
   <section class="py-20">
     <h3 class="text-4xl text-center">Why play?</h3>
-
     <div class="border-b border-zinc-500 max-w-3xl mx-auto mt-8 mb-6"></div>
 
-    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {
         why.map((x) => (
           <div class="relative">
             <Image
+              width={640}
               src={x.img}
               alt={x.title}
               class="-z-10 absolute w-full h-full object-cover brightness-50"
             />
 
-            <div class="py-36 px-5 text-center">
+            <div class="py-36 px-5 text-center break-words">
               <h4 class="text-4xl mb-4">{x.title}</h4>
               <p>{x.content}</p>
             </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="py-20">
+    <h3 class="text-4xl text-center">Videos</h3>
+    <div class="border-b border-zinc-500 max-w-3xl mx-auto mt-8 mb-6"></div>
+
+    <div
+      class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+      xl:grid-cols-4"
+    >
+      {
+        videos.map((x) => (
+          <div>
+            <iframe
+              class="w-full h-auto aspect-video"
+              loading="lazy"
+              width="640"
+              height="360"
+              src={`https://www.youtube.com/embed/${x.id}`}
+              title={x.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+
+            <h4 class="text-sm text-center opacity-50 mt-2 px-2">{x.title}</h4>
           </div>
         ))
       }
