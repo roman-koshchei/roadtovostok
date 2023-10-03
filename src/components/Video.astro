@@ -39,6 +39,10 @@ server-side:
 client-side:
 - embedUrl: https://www.youtube-nocookie.com/embed/${id}?${params.toString()}
 - embedUrl: https://www.youtube.com/embed/${id}
+
+
+TODO: load iframe on click on image
+https://stackoverflow.com/questions/1268482/is-there-a-way-to-load-embedded-youtube-videos-faster-on-my-website
 */
 
 const max = await maxResolutionExist(id)
@@ -60,7 +64,7 @@ const imgSrc = max
         height={360}
       />
     </a>
-    <YouTube {id} {title} client:load/>
+    <YouTube {id} {title} client:idle/>
   </div>
 
   <p class="text-sm text-center opacity-50 mt-2 px-2">{title}</p>
