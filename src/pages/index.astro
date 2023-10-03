@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets"
+import Layout from "../layouts/Layout.astro"
+import background from "../assets/background.jpg"
+
+import hardcoreImg from "../assets/home/hardcore.jpg"
+import immersionImg from "../assets/home/immersion.jpg"
+import performanceImg from "../assets/home/performance.jpg"
+import developerImg from "../assets/home/developer.jpg"
+
+const why = [
+  {
+    img: hardcoreImg,
+    title: "Hardcore",
+    content:
+      "A tailored experience for those survival game enthusiasts who seek for unforgiving gameplay and realistic mechanics."
+  },
+  {
+    img: immersionImg,
+    title: "Immersion",
+    content:
+      "Based on real-world abandoned locations to ensure unique and authentic atmosphere of a post-apocalyptic world."
+  },
+  {
+    img: performanceImg,
+    title: "Performance",
+    content:
+      "Handmade and highly optimized game world designed for providing smooth experience even for mid-range systems."
+  },
+  {
+    img: developerImg,
+    title: "Developer",
+    content:
+      "Solo developed by ex-military lieutenant with over 10 years of game development experience."
+  }
+]
+---
+
+<Layout title="Road to Vostok">
+  <section class="h-[65vh]">
+    <Image
+      src={background}
+      alt="Preview image of game."
+      class="absolute -z-50 right-0 top-0 left-0 h-full object-cover brightness-[.55]"
+    />
+
+    <div class="text-center">
+      <h1 class="text-3xl">Your road, your story</h1>
+      <h2 class="my-4">
+        A hardcore single-player survival game set in a post-apocalyptic border
+        zone.
+      </h2>
+
+      <a
+        class="rounded-full bg-black py-3 px-6 inline-block text-sm m-1"
+        href="https://www.patreon.com/roadtovostok"
+      >
+        Support on Patreon
+      </a>
+      <a
+        class="rounded-full bg-black py-3 px-6 inline-block text-sm m-1"
+        href="https://store.steampowered.com/app/1963610/Road_to_Vostok/"
+      >
+        Wishlist on Steam
+      </a>
+      <a
+        class="rounded-full bg-black py-3 px-6 inline-block text-sm m-1"
+        href="/faq"
+        rel="prefetch-intent"
+      >
+        FAQ
+      </a>
+
+      <p class="text-sm mt-4 shadow opacity-60">
+        The game is under active development
+      </p>
+      <p class="text-sm shadow opacity-60">
+        Next milestone: Public Demo 2 (Q3/2023)
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <h3 class="text-4xl text-center">Why play?</h3>
+
+    <div class="border-b border-zinc-500 max-w-3xl mx-auto mt-8 mb-6"></div>
+
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
+      {
+        why.map((x) => (
+          <div class="relative">
+            <Image
+              src={x.img}
+              alt={x.title}
+              class="-z-10 absolute w-full h-full object-cover brightness-50"
+            />
+
+            <div class="py-36 px-5 text-center">
+              <h4 class="text-4xl mb-4">{x.title}</h4>
+              <p>{x.content}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

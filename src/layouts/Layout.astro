@@ -1,0 +1,143 @@
+---
+import "@fontsource/lora"
+import logo from "../assets/logo.png"
+import { Image } from "astro:assets"
+
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+
+const navigation = [
+  {
+    title: "Home",
+    route: "/"
+  },
+  {
+    title: "Game",
+    route: "/game"
+  },
+  {
+    title: "Roadmap",
+    route: "/roadmap"
+  },
+  {
+    title: "Media",
+    route: "/medial"
+  },
+  {
+    title: "FAQ",
+    route: "/faq"
+  }
+]
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title && `${title} | `}Road to Vostok</title>
+    <meta
+      name="description"
+      content="Road to Vostok is a hardcore single-player survival game set in a post-apocalyptic border zone between Finland and Russia."
+    />
+    <link rel="canonical" href="https://roadtovostok.flurium.com/" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Road to Vostok" />
+    <meta
+      property="og:description"
+      content="Road to Vostok is a hardcore single-player survival game set in a post-apocalyptic border zone between Finland and Russia."
+    />
+    <meta property="og:url" content="https://roadtovostok.flurium.com/" />
+    <meta property="og:site_name" content="Road to Vostok" />
+    <!-- <meta 
+			property="article:publisher" 
+			content="https://www.facebook.com/roadtovostok"> -->
+    <meta
+      property="article:modified_time"
+      content="2023-09-01T19:58:26+00:00"
+    />
+    <!-- <meta property="og:image" content="https://roadtovostok.com/wp-content/uploads/2023/06/Road_to_Vostok_Header_Main.jpg"> -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- <meta name="twitter:site" content="@roadtovostok"> -->
+    <meta name="twitter:label1" content="Est. reading time" />
+    <meta name="twitter:data1" content="2 minutes" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="bg-black text-white tracking-widest">
+    <div class="mx-auto px-6 lg:px-20 pt-8 pb-4">
+      <header>
+        <Image src={logo} alt="Logo" class="w-80 h-auto m-auto" />
+
+        <nav class="mt-8 flex gap-14 font-medium justify-center">
+          {
+            navigation.map((link) => (
+              <a
+                class="hover:opacity-75 duration-300 transition-opacity uppercase"
+                rel="prefetch-intent"
+                href={link.route}
+              >
+                {link.title}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
+
+      <main class="pt-12">
+        <slot />
+      </main>
+
+      <footer
+        class="flex items-center flex-col-reverse lg:flex-row justify-between"
+      >
+        <span>Road to Vostok © 2022 | All Rights Reserved.</span>
+
+        <div class="flex gap-2">
+          {
+            navigation.map((link) => (
+              <>
+                <a
+                  class="hover:text-black transition-colors duration-500"
+                  rel="prefetch-intent"
+                  href={link.route}
+                >
+                  {link.title}
+                </a>
+                |
+              </>
+            ))
+          }
+          <a
+            class="hover:text-black transition-colors duration-500"
+            href="/privacy-policy"
+            rel="prefetch-intent"
+          >
+            Privacy Policy
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<!-- <link rel="profile" href="https://gmpg.org/xfn/11">
+
+		<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://roadtovostok.com/#organization","name":"Road to Vostok","url":"https://roadtovostok.com/","sameAs":["https://www.facebook.com/roadtovostok","https://www.instagram.com/roadtovostok/","https://www.youtube.com/channel/UCe0fMfiqa7AlkkHHKyRNvSg","https://twitter.com/roadtovostok"],"logo":{"@type":"ImageObject","@id":"https://roadtovostok.com/#logo","inLanguage":"en-US","url":"https://roadtovostok.com/wp-content/uploads/2021/08/Road_to_Vostok_Logo.png","contentUrl":"https://roadtovostok.com/wp-content/uploads/2021/08/Road_to_Vostok_Logo.png","width":2048,"height":2048,"caption":"Road to Vostok"},"image":{"@id":"https://roadtovostok.com/#logo"}},{"@type":"WebSite","@id":"https://roadtovostok.com/#website","url":"https://roadtovostok.com/","name":"Road to Vostok","description":"Road to Vostok is a hardcore single-player survival game set in a post-apocalyptic border zone between Finland and Russia.","publisher":{"@id":"https://roadtovostok.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://roadtovostok.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://roadtovostok.com/#primaryimage","inLanguage":"en-US","url":"https://roadtovostok.com/wp-content/uploads/2023/06/Road_to_Vostok_Header_Main.jpg","contentUrl":"https://roadtovostok.com/wp-content/uploads/2023/06/Road_to_Vostok_Header_Main.jpg","width":2560,"height":1440},{"@type":"WebPage","@id":"https://roadtovostok.com/#webpage","url":"https://roadtovostok.com/","name":"Road to Vostok","isPartOf":{"@id":"https://roadtovostok.com/#website"},"about":{"@id":"https://roadtovostok.com/#organization"},"primaryImageOfPage":{"@id":"https://roadtovostok.com/#primaryimage"},"datePublished":"2021-08-25T17:46:09+00:00","dateModified":"2023-09-01T19:58:26+00:00","description":"Road to Vostok is a hardcore single-player survival game set in a post-apocalyptic border zone between Finland and Russia.","breadcrumb":{"@id":"https://roadtovostok.com/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://roadtovostok.com/"]}]},{"@type":"BreadcrumbList","@id":"https://roadtovostok.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]}]}</script> -->
+
+<style is:global>
+  body {
+    font-family: "Lora", system-ui, sans-serif;
+  }
+</style>
