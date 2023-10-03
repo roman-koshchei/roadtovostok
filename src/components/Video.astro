@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets"
+import YouTube from "./YouTube.svelte"
+
+interface Props {
+  id: string
+  title: string
+}
+
+const { id, title } = Astro.props
+
+async function maxResolutionExist(id: string) {
+  try {
+    const response = await fetch(
+      `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
+      { method: "HEAD" }
+    )
+    return response.ok
+  } catch (error) {
+    return false
+  }
+}
+
+/*
+
+Need to separate Astro static image optimization from client side.
+I will use Svelte, because it's fast and I like it.
+
+We can load preview image during building.
+Then we will load an iframe on client side (maybe on hover), 
+because it anyway requires js to play.
+
+server-side:
+- max: https://i.ytimg.com/vi/${id}/maxresdefault.jpg
+- thumbnailUrl = https://i.ytimg.com/vi/${id}/sddefault.jpg
+- youtubeUrl: https://www.youtube.com/watch?v=${id}
+
+
+client-side:
+- embedUrl: https://www.youtube-nocookie.com/embed/${id}?${params.toString()}
+- embedUrl: https://www.youtube.com/embed/${id}
+*/
+
+const max = await maxResolutionExist(id)
+const imgSrc = max
+  ? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
+  : `https://i.ytimg.com/vi/${id}/sddefault.jpg`
+---
+
+<div>
+  <div class="relative w-full h-auto aspect-video">
+    <a 
+      class="inline-block" 
+      href={`https://www.youtube.com/watch?v=${id}`}
+    >
+      <Image
+        src={imgSrc}
+        alt={title}
+        width={640}
+        height={360}
+      />
+    </a>
+    <YouTube {id} {title} client:load/>
+  </div>
+
+  <p class="text-sm text-center opacity-50 mt-2 px-2">{title}</p>
+</div>

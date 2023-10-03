@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets"
+import Video from "../components/Video.astro"
 import Layout from "../layouts/Layout.astro"
 import background from "../assets/background.jpg"
 
@@ -131,22 +132,23 @@ https://img.youtube.com/vi/TueqUvN5qu4/maxresdefault.jpg
       xl:grid-cols-4"
     >
       {
-        videos.map((x) => (
-          <div>
-            <iframe
-              class="w-full h-auto aspect-video"
-              loading="lazy"
-              width="640"
-              height="360"
-              src={`https://www.youtube.com/embed/${x.id}`}
-              title={x.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            />
+        // videos.map((x) => (
+        //   <div>
+        //     <iframe
+        //       class="w-full h-auto aspect-video"
+        //       loading="lazy"
+        //       width="640"
+        //       height="360"
+        //       src={`https://www.youtube.com/embed/${x.id}`}
+        //       title={x.title}
+        //       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        //       allowfullscreen
+        //     />
 
-            <h4 class="text-sm text-center opacity-50 mt-2 px-2">{x.title}</h4>
-          </div>
-        ))
+        //     <h4 class="text-sm text-center opacity-50 mt-2 px-2">{x.title}</h4>
+        //   </div>
+        // ))
+        videos.map((x) => <Video id={x.id} title={x.title} />)
       }
     </div>
   </section>
