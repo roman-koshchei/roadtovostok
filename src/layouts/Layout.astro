@@ -2,6 +2,7 @@
 import "@fontsource/lora"
 import logo from "../assets/logo.png"
 import { Image } from "astro:assets"
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title?: string
@@ -24,7 +25,7 @@ const navigation = [
   },
   {
     title: "Media",
-    route: "/medial"
+    route: "/media"
   },
   {
     title: "FAQ",
@@ -37,6 +38,7 @@ const navigation = [
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <ViewTransitions/>
 
     <meta
       name="robots"
@@ -105,7 +107,7 @@ const navigation = [
       </main>
 
       <footer
-        class="flex items-center flex-col-reverse lg:flex-row justify-between"
+        class="flex items-center flex-col-reverse lg:flex-row justify-between pt-32"
       >
         <span>Road to Vostok © 2022 | All Rights Reserved.</span>
 

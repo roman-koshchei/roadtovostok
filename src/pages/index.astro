@@ -2,12 +2,23 @@
 import { Image } from "astro:assets"
 import Video from "../components/Video.astro"
 import Layout from "../layouts/Layout.astro"
+import Screenshot from "../components/Screenshot.svelte"
+
 import background from "../assets/background.jpg"
 
 import hardcoreImg from "../assets/home/hardcore.jpg"
 import immersionImg from "../assets/home/immersion.jpg"
 import performanceImg from "../assets/home/performance.jpg"
 import developerImg from "../assets/home/developer.jpg"
+
+import screenshot1 from "../assets/screenshots/1.png"
+import screenshot2 from "../assets/screenshots/2.png"
+import screenshot3 from "../assets/screenshots/3.png"
+import screenshot4 from "../assets/screenshots/4.png"
+import screenshot5 from "../assets/screenshots/5.png"
+import screenshot6 from "../assets/screenshots/6.png"
+import screenshot7 from "../assets/screenshots/7.png"
+import screenshot8 from "../assets/screenshots/8.png"
 
 const why = [
   {
@@ -49,9 +60,11 @@ const videos = [
   { id: "UdZDrRhEizc", title: "The Next Chapter | Devlog #5 | Road to Vostok" },
   { id: "9OmnsnopobM", title: "Introduction | Devlog #1 | Road to Vostok" }
 ]
-/*
-https://img.youtube.com/vi/TueqUvN5qu4/maxresdefault.jpg
-*/
+
+const screenshots = [
+  screenshot1, screenshot2, screenshot3, screenshot4, screenshot5,
+  screenshot6, screenshot7, screenshot8
+]
 ---
 
 <Layout >
@@ -136,6 +149,29 @@ https://img.youtube.com/vi/TueqUvN5qu4/maxresdefault.jpg
        
         videos.map((x) => <Video id={x.id} title={x.title} />)
       }
+    </div>
+  </section>
+
+  <section class="py-20">
+    <h3 class="text-4xl text-center">Screenshots</h3>
+    <div class="border-b border-zinc-500 max-w-3xl mx-auto mt-8 mb-6"></div>
+
+    <div
+      class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+      xl:grid-cols-4"
+    >
+      {
+       
+        screenshots.map((x, i) => ( 
+          <Screenshot src={x.src} client:load>
+            <Image 
+              src={x} alt={`Screenshot ${i + 1}`} 
+              class="w-full h-auto" 
+            />
+          </Screenshot>
+        ))
+      }
+      <!-- <a href={x.src} download>download</a> -->
     </div>
   </section>
 </Layout>
