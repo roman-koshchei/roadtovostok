@@ -16,8 +16,10 @@ Remake of Road to Vostok website to make it faster with new technologies.
 Currently only landing page is made. And it doesn't contain full functionality,
 but main performance pain point (youtube videos) is remade.
 
-Original website: [Link to Pagespeed]()
+Original website: [Link to Pagespeed](https://pagespeed.web.dev/analysis/https-roadtovostok-com/55tw4yxc81?form_factor=mobile)
+
 ![Original performance](./assets/original.png)
 
 My remake: [Link to Pagespeed](https://pagespeed.web.dev/analysis/https-roadtovostok-flurium-com/e0go5c5j6e?form_factor=mobile)
+
 ![Remake performance](./assets/remake.png)
